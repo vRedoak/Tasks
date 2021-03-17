@@ -1,6 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Task1
+namespace EpamTask1
 {
     class Program
     {
@@ -16,7 +20,7 @@ namespace Task1
                 Console.Write("C = ");
                 CheckData(out double c);
                 Triangle triangle = new Triangle(a, b, c);
-                Console.WriteLine("Площадь треугольник: "+ triangle.Square());
+                Console.WriteLine("Площадь треугольник: " + triangle.Square());
                 Console.WriteLine("Периметр треугольника: " + triangle.Perimeter());
             }
             catch (Exception e) { Console.WriteLine("Ошибка: " + e.Message); }

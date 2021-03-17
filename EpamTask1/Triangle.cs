@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Task1
+namespace EpamTask1
 {
     public class Triangle
     {
@@ -15,7 +15,7 @@ namespace Task1
             A = a;
             B = b;
             C = c;
-            if (!this.TriangleExistenceTest()) throw new Exception("Сообщение конструктора : Такого треугольника не может быть");
+            if (!this.TriangleExistenceTest()) throw new Exception("Такого треугольника не может быть");
         }
 
         public double A

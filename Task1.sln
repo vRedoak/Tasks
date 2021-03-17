@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.1321
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task1", "ConsoleApp1\Task1.csproj", "{79029BB7-01D8-4144-9B9B-359EBA3D0375}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EpamTask1", "EpamTask1\EpamTask1.csproj", "{A6873E44-D79E-4067-82B2-A3659D27E2FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TriangleTest", "TriangleTest\TriangleTest.csproj", "{1391357A-328F-44A8-A8FF-2BEAB57039FC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{79029BB7-01D8-4144-9B9B-359EBA3D0375}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{79029BB7-01D8-4144-9B9B-359EBA3D0375}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{79029BB7-01D8-4144-9B9B-359EBA3D0375}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{79029BB7-01D8-4144-9B9B-359EBA3D0375}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6873E44-D79E-4067-82B2-A3659D27E2FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6873E44-D79E-4067-82B2-A3659D27E2FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6873E44-D79E-4067-82B2-A3659D27E2FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6873E44-D79E-4067-82B2-A3659D27E2FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1391357A-328F-44A8-A8FF-2BEAB57039FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1391357A-328F-44A8-A8FF-2BEAB57039FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1391357A-328F-44A8-A8FF-2BEAB57039FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1391357A-328F-44A8-A8FF-2BEAB57039FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
