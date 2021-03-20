@@ -1,63 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace EpamTask1
 {
     public class Triangle
     {
-        private double a;
-        private double b;
-        private double c;
+        private double[] _sides;
 
         public Triangle(double a, double b, double c)
         {
-            A = a;
-            B = b;
-            C = c;
-            if (!this.TriangleExistenceTest()) throw new Exception("Такого треугольника не может быть");
+            _sides = new double[3] { a, b, c };
+            if (_sides.Any(i => i <= 0))
+                throw new ArgumentException("Значения должны быть положительными");
+            if (!this.TriangleExistenceTest())
+                throw new ArgumentException("Такого треугольника не может быть");
         }
 
-        public double A
+        public double GetSideByIndex(int index)
         {
-            get
-            { return a; }
-            private set
-            {
-                if (value < 0) throw new Exception("Значение не может быть отрицательным");
-                a = value;
-
-            }
-        }
-        public double B
-        {
-            get
-            { return b; }
-            private set
-            {
-                if (value < 0) throw new Exception("Значение не может быть отрицательным");
-                b = value;
-            }
-        }
-        public double C
-        {
-            get
-            { return c; }
-            private set
-            {
-                if (value < 0) throw new Exception("Значение не может быть отрицательным");
-                c = value;
-            }
+            if (index < _sides.Length && index >= 0)
+                return _sides[index];
+            else throw new ArgumentOutOfRangeException("Недопустимый индекс");
         }
 
-        public bool TriangleExistenceTest() => (a + b > c && a + c > b && c + b > a);
+        public bool TriangleExistenceTest() => _sides.All(i => _sides.Sum() - i > i);
 
         public double Square()
         {
-            double p = (a + b + c) / 2;
-            return Math.Round(Math.Sqrt(p * (p - a) * (p - b) * (p - c)), 2);
+            double p = Perimeter() / 2;
+            return Math.Round(Math.Sqrt(p * _sides.Select(i => p - i).Aggregate((x, y) => x * y)), 2);
         }
 
-        public double Perimeter() => a + b + c;
+        public double Perimeter() => _sides.Sum();
     }
 }

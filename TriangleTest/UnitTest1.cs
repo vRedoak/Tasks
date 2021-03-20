@@ -22,30 +22,26 @@ namespace TriangleTest
         }
 
         [TestMethod]
-        [ExpectedException(typeof(Exception))]
+        [ExpectedException(typeof(ArgumentException))]
         public void SquareCalcWithZero()
         {
             double s = (new Triangle(0, 0, 0)).Square();
         }
 
         [TestMethod]
-        [ExpectedException(typeof(Exception))]
+        [ExpectedException(typeof(ArgumentException))]
         public void SquareCalcWithNonexistentTriangle()
         {
             double s = (new Triangle(1, 9, 7)).Square();
         }
 
         [TestMethod]
-        [ExpectedException(typeof(Exception))]
+        [ExpectedException(typeof(ArgumentException))]
         public void SquareCalcWithIncorrectData()
         {
             double s = (new Triangle(-4,4, 7)).Square();
         }
-    }
 
-    [TestClass]
-    public class TestPerimeter
-    {
         [TestMethod]
         public void StandartPerimeterCalc()
         {
@@ -61,30 +57,26 @@ namespace TriangleTest
         }
 
         [TestMethod]
-        [ExpectedException(typeof(Exception))]
+        [ExpectedException(typeof(ArgumentException))]
         public void PerimeterCalcWithZero()
         {
             double s = (new Triangle(0, 0, 0)).Perimeter();
         }
 
         [TestMethod]
-        [ExpectedException(typeof(Exception))]
+        [ExpectedException(typeof(ArgumentException))]
         public void PerimeterCalcWithNonexistentTriangle()
         {
             double s = (new Triangle(1, 9, 7)).Perimeter();
         }
 
         [TestMethod]
-        [ExpectedException(typeof(Exception))]
+        [ExpectedException(typeof(ArgumentException))]
         public void PerimeterCalcWithIncorrectData()
         {
             double s = (new Triangle(-4, 4, 7)).Perimeter();
         }
-    }
 
-    [TestClass]
-    public class TestTriangleExistence
-    {
         [TestMethod]
         public void StandartTestTriangleExistence()
         {
@@ -93,10 +85,26 @@ namespace TriangleTest
         }
 
         [TestMethod]
-        [ExpectedException(typeof(Exception))]
+        [ExpectedException(typeof(ArgumentException))]
         public void TestTriangleExistenceWithIncorrectData()
         {
             bool t = (new Triangle(4, -2, 7)).TriangleExistenceTest();
+        }
+
+         [TestMethod]
+        public void StandartGetSideByIndexTest()
+        {
+            Triangle t = new Triangle(3, 4, 6);
+            Assert.AreEqual(t.GetSideByIndex(2), 6);
+            Assert.AreEqual(t.GetSideByIndex(1), 4);
+            Assert.AreEqual(t.GetSideByIndex(0), 3);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void GetSideByIndexTestWithIncorrectData()
+        {
+            double t = (new Triangle(4, 6, 7)).GetSideByIndex(5);
         }
     }
  }
