@@ -20,7 +20,7 @@ namespace EpamTask1
                 Console.Write("C = ");
                 CheckData(out double c);
                 Triangle triangle = new Triangle(a, b, c);
-                Console.WriteLine("Площадь треугольник: " + triangle.Square());
+                Console.WriteLine("Площадь треугольник: " + Math.Round( triangle.Square(),2));
                 Console.WriteLine("Периметр треугольника: " + triangle.Perimeter());
             }
             catch (Exception e) { Console.WriteLine("Ошибка: " + e.Message); }

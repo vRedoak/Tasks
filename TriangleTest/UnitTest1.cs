@@ -11,14 +11,14 @@ namespace TriangleTest
         public void StandartSquareCalc()
         {
             double s = (new Triangle(2, 3, 4)).Square();
-            Assert.AreEqual(2.90, s);
+            Assert.AreEqual(2.90, Math.Round(s,2));
         }
 
         [TestMethod]
         public void SquareCalcWithSameData()
         {
             double s = (new Triangle(1, 1, 1)).Square();
-            Assert.AreEqual(0.43, s);
+            Assert.AreEqual(0.43, Math.Round(s,2));
         }
 
         [TestMethod]

@@ -25,12 +25,16 @@ namespace EpamTask1
             else throw new ArgumentOutOfRangeException("Недопустимый индекс");
         }
 
-        public bool TriangleExistenceTest() => _sides.All(i => _sides.Sum() - i > i);
+        public bool TriangleExistenceTest()
+        {
+            double sum = Perimeter();
+          return  _sides.All(i => sum - i > i);
+        }
 
         public double Square()
         {
             double p = Perimeter() / 2;
-            return Math.Round(Math.Sqrt(p * _sides.Select(i => p - i).Aggregate((x, y) => x * y)), 2);
+            return Math.Sqrt(p * _sides.Select(i => p - i).Aggregate((x, y) => x * y));
         }
 
         public double Perimeter() => _sides.Sum();
