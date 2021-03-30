@@ -7,38 +7,30 @@ using System.IO;
 
 namespace Task3
 {
-    class ReadPasswordStream : DecoratorStream
+    class ReadWithPercentStream : DecoratorStream
     {
-        string StreamPassword { get; set; }
-        string UserPassword { get; set; }
 
-        public ReadPasswordStream (Stream stream, string password): base (stream)
-        {
-            StreamPassword = "1111";
-            UserPassword = password;
-            
-        }
+        public ReadWithPercentStream(Stream stream) : base(stream) { }
 
         public override int Read(byte[] buffer, int offset, int count)
         {
-            if (StreamPassword == UserPassword)
-                return stream.Read(buffer, offset, count);
-            throw new InvalidOperationException("Неверный пароль!");
+            return (int)Math.Round((double)stream.Read(buffer, offset, count) * 100 / stream.Length , 0);
         }
-        
+
         public override bool CanRead
         {
             get { return stream.CanRead; }
         }
 
-        public override bool CanSeek 
+
+        public override bool CanSeek
         {
-            get { return stream.CanSeek; }
+            get { return stream.CanRead; }
         }
 
         public override bool CanWrite
         {
-            get { return stream.CanWrite; }
+            get { return stream.CanRead; }
         }
 
         public override void Flush()

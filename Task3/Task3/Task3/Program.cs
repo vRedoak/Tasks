@@ -16,17 +16,21 @@ namespace Task3
                 using (FileStream fileStream = File.OpenRead(@"..\..\..\file.txt"))
                 {
                     byte[] array = new byte[fileStream.Length];
-                    new ReadPasswordStream(fileStream, Console.ReadLine()).Read(array, 0, array.Length);
+                    Console.WriteLine("Введите пароль: ");
+                    DecoratorStream decorStream = new ReadPasswordStream(new ReadWithPercentStream(fileStream), Console.ReadLine());
+                    Console.WriteLine("Считано процентов: "+decorStream.Read(array, 0, array.Length-1));
                     string text = System.Text.Encoding.Default.GetString(array);
-                    Console.WriteLine($"В файле содержится текст: {text}");
+                   Console.WriteLine("В файле содержится текст : "+text);
                 }
-                
+ 
             }
             catch(Exception e)
             {
-                Console.WriteLine("Ошибка:" + e);
+                Console.WriteLine("Ошибка:" + e.Message);
             }
             Console.ReadLine();
         }
+
+        
     }
 }
