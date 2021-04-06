@@ -17,20 +17,24 @@ namespace Task3
                 {
                     byte[] array = new byte[fileStream.Length];
                     Console.WriteLine("Введите пароль: ");
-                    DecoratorStream decorStream = new ReadPasswordStream(new ReadWithPercentStream(fileStream), Console.ReadLine());
-                    Console.WriteLine("Считано процентов: "+decorStream.Read(array, 0, array.Length-1));
+                    ReadWithPercentStream decorStream = new ReadWithPercentStream(new ReadPasswordStream((fileStream), Console.ReadLine()), PercentToConsole);
+                    decorStream.Read(array, 0, array.Length);
                     string text = System.Text.Encoding.Default.GetString(array);
-                   Console.WriteLine("В файле содержится текст : "+text);
+                    Console.WriteLine("В файле содержится текст : " + text);
                 }
- 
+
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine("Ошибка:" + e.Message);
             }
             Console.ReadLine();
         }
 
-        
+        public static void PercentToConsole(int percent)
+        {
+            Console.WriteLine("Прочитано " + percent + "% файла ");
+        }
+
     }
 }

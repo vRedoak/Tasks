@@ -7,16 +7,17 @@ using System.IO;
 
 namespace Task3
 {
-    class ReadPasswordStream : DecoratorStream
+    class ReadPasswordStream :Stream
     {
+        protected Stream stream;
         string StreamPassword { get; set; }
         string UserPassword { get; set; }
 
-        public ReadPasswordStream (Stream stream, string password): base (stream)
+        public ReadPasswordStream (Stream stream, string password)
         {
             StreamPassword = "1111";
             UserPassword = password;
-            
+            this.stream = stream;
         }
 
         public override int Read(byte[] buffer, int offset, int count)

@@ -13,7 +13,7 @@ namespace Task3
          
         public DecoratorStream(Stream stream)
         {
-            this.stream = stream;
+            
         }
 
         public override int Read(byte[] buffer, int offset, int count)

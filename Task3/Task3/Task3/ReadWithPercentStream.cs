@@ -7,14 +7,35 @@ using System.IO;
 
 namespace Task3
 {
-    class ReadWithPercentStream : DecoratorStream
+    class ReadWithPercentStream : Stream
     {
+        protected Stream stream;
+        public delegate void Handler(int percent);
+        public event Handler PercentRead;
+        int limitPercent = 10;
 
-        public ReadWithPercentStream(Stream stream) : base(stream) { }
 
+        public ReadWithPercentStream(Stream stream, Handler outputPercent)
+        {
+            this.stream = stream;
+            PercentRead += outputPercent;
+        } 
+        
         public override int Read(byte[] buffer, int offset, int count)
         {
-            return (int)Math.Round((double)stream.Read(buffer, offset, count) * 100 / stream.Length , 0);
+            int n = limitPercent;
+            StreamReader sr = new StreamReader(stream);
+            for (int i = 0; i < count; i++)
+            {
+                buffer[i] = (byte)sr.Read();
+                int percent = (int)Math.Round((double)(i * 100 / count), 0);
+                if (percent > n)
+                {
+                    PercentRead?.Invoke(percent);
+                    n = n + limitPercent;
+                }
+            }
+            return count;
         }
 
         public override bool CanRead
