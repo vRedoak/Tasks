@@ -17,9 +17,9 @@ namespace Task4
                    new double[,] { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } }
                );
                 Matrix m2 = m + m;
-                for (int i = 0; i < m.Value.GetLength(0); i++)
+                for (int i = 0; i < m.GetLength(0); i++)
                 {
-                    for (int j = 0; j < m.Value.GetLength(1); j++)
+                    for (int j = 0; j < m.GetLength(1); j++)
                     {
                         Console.Write(m2[i, j] + " ");
                     }

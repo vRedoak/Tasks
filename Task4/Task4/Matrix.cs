@@ -20,7 +20,15 @@ namespace Task4
             }
         }
 
-        public double[,] Value { get; set; }
+        double[,] Value { get; set; }
+
+        public int GetLength(int dimension)
+        {
+            if (dimension < 0 || dimension >= Value.Rank)
+                throw new Exception("Введенного измерения массива не существует");
+           return Value.GetLength(dimension);
+        }
+
 
         public Matrix(int i, int j)
         {
