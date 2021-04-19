@@ -20,7 +20,7 @@ namespace Task4
             }
         }
 
-        double[,] Value { get; set; }
+        double[,] Value;
 
         public int GetLength(int dimension)
         {
@@ -94,7 +94,7 @@ namespace Task4
             {
                 for (j = 0; j < matrix1.Value.GetLength(1); j++)
                 {
-                    matrix1.Value[i, j] = x * matrix1.Value[i, j];
+                    matrix1.Value[i, j] *= x ;
                 }
             }
             return matrix1;
@@ -119,8 +119,8 @@ namespace Task4
         public override int GetHashCode()
         {
             int hashcode = this[0, 0].GetHashCode();
-            hashcode = hashcode + this[0, 1].GetHashCode();
-            hashcode = hashcode + this[0, 2].GetHashCode();
+            hashcode += this[0, 1].GetHashCode();
+            hashcode += this[0, 2].GetHashCode();
             return hashcode;
         }
     }
